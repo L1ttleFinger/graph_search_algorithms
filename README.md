@@ -4,5 +4,3 @@ Python implementation of the following graph search algorithms:
 - DFS (Depth First Search)
 - A*
 - Dijkstra
-
-test
