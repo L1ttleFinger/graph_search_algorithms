@@ -1,7 +1,9 @@
 import streamlit as st
 
-st.header('Graph Search Algorithms')
+algorithm = st.sidebar.selectbox('Search Algorithm', ('Breadth-First Search', 'Depth-First Search', 'A*', 'Dijkstra'))
 
-with st.sidebar:
-    st.selectbox('Search Algorithm', ('Breadth First Search', 'Depth Forst Search', 'A*', 'Dijkstra'))
+st.header('Graph Search Algorithms')
+st.divider()
+st.markdown(f'{algorithm} algorithm selected as search method')
+
 
