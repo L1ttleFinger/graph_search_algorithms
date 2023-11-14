@@ -1,5 +1,7 @@
 import networkx as nx
 import matplotlib.pyplot as plt
+from graph import Graph
+from search_algorithms import bfs, dfs
 
 graph_dict = {
     0: [1, 2],
@@ -22,33 +24,9 @@ graph_dict = {
 }
 
 
-class Graph:
-    def __init__(self, graph_dict=None):
-        if graph_dict is None:
-            graph_dict = {}
-        self.graph = graph_dict
-
-
-def dfs(graph, start, visited=None):
-    if visited is None:
-        visited = []
-    visited.append(start)
-    for neighbor in graph[start]:
-        if neighbor not in visited:
-            dfs(graph, neighbor, visited)
-    return visited
-
-
-def bfs(graph, start):
-    queue = [start]
-    visited = [start]
-    while len(queue) > 0:
-        current = queue.pop(0)
-        for neighbor in graph[current]:
-            if neighbor not in visited:
-                visited.append(neighbor)
-                queue.append(neighbor)
-    return visited
+def generate_graph():
+    graph = Graph(graph_dict).graph
+    return graph
 
 
 def graph_search(algorithm, graph, start):
@@ -60,11 +38,6 @@ def graph_search(algorithm, graph, start):
         return bfs(graph, start)
 
 
-def generate_graph():
-    graph = Graph(graph_dict).graph
-    return graph
-
-
 def plot_graph(graph, color_map, plot_holder):
     G = nx.Graph(graph)
     pos = nx.nx_agraph.graphviz_layout(G, prog="twopi", args="")
@@ -72,7 +45,7 @@ def plot_graph(graph, color_map, plot_holder):
     plot_holder.pyplot()
 
 
-def run_search(algorithm, graph, plot_holder, start, step_duration=0.5):
+def run_visualization(algorithm, graph, plot_holder, start, step_duration=0.5):
     visited = graph_search(algorithm, graph, start)
     n = len(visited)
     for i in range(n):

@@ -62,4 +62,4 @@ graph = generate_graph()
 plot_graph(graph, "lightgray", plot_holder)
 
 if begin:
-    run_search(algorithm, graph, plot_holder, start, step_duration)
+    run_visualization(algorithm, graph, plot_holder, start, step_duration)
