@@ -3,22 +3,22 @@ import matplotlib.pyplot as plt
 
 graph_dict = {
     0: [1, 2],
-    1: [3, 4],
-    2: [5, 6],
-    3: [7, 8, 9],
-    4: [10, 11, 12],
-    5: [13, 14],
-    6: [15, 16],
-    7: [],
-    8: [],
-    9: [],
-    10: [],
-    11: [],
-    12: [],
-    13: [],
-    14: [],
-    15: [],
-    16: [],
+    1: [0, 3, 4],
+    2: [0, 5, 6],
+    3: [1, 7, 8, 9],
+    4: [1, 10, 11, 12],
+    5: [2, 13, 14],
+    6: [2, 15, 16],
+    7: [3],
+    8: [3],
+    9: [3],
+    10: [4],
+    11: [4],
+    12: [4],
+    13: [5],
+    14: [5],
+    15: [6],
+    16: [6],
 }
 
 
@@ -72,10 +72,10 @@ def plot_graph(graph, color_map, plot_holder):
     plot_holder.pyplot()
 
 
-def run_search(algorithm, graph, plot_holder, start):
+def run_search(algorithm, graph, plot_holder, start, step_duration=0.5):
     visited = graph_search(algorithm, graph, start)
     n = len(visited)
-    for i in range(n + 1):
+    for i in range(n):
         color_map = []
         for node in graph:
             if node in visited[:i]:
@@ -85,5 +85,5 @@ def run_search(algorithm, graph, plot_holder, start):
             else:
                 color_map.append("lightgray")
         plot_graph(graph, color_map, plot_holder)
-        if i < n:
-            plt.pause(0.6)
+        plt.pause(step_duration)
+    plot_graph(graph, "lightgreen", plot_holder)
