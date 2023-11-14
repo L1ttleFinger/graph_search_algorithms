@@ -16,5 +16,3 @@ TODO:
 
 - A*
 - Dijkstra
-
-test
